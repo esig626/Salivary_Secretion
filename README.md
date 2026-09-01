@@ -1,20 +1,65 @@
-Investigation of Primary Saliva Secretion in Salivary Gland Acinar Cells
-Salivary gland acinar cells use calcium (Ca<sup>2+</sup>) ions as signaling messengers to regulate a diverse range of intracellular processes, including the secretion of primary saliva. Although the underlying mechanisms responsible for saliva secretion are reasonably well understood, the precise role played by spatially heterogeneous intracellular Ca<sup>2+</sup> signaling in these cells remains uncertain.
+# Mathematical models of primary saliva secretion
 
-Overview
-In this study, we use a mathematical model based on new and unpublished experimental data from parotid acinar cells (measured in excised lobules of mouse parotid gland) to investigate how the structure of the cell and the spatio-temporal properties of Ca<sup>2+</sup> signaling influence the production of primary saliva. We combine a new Ca<sup>2+</sup> signaling model (described in detail in a companion paper: Pages et al. (2018), submitted) with an existing secretion model (Vera-Sigüenza E, et al., Bull Math Biol 80: 255-282, 2018. https://doi.org/10.1007/s11538-017-0370-6) and solve the resultant model in an anatomically-accurate three-dimensional cell.
+This repository contains MATLAB research code, parameter data, and reconstructed three-dimensional geometry used in mechanistic modelling of calcium-regulated primary saliva secretion in parotid acinar cells. The work spans single-cell models, anatomically reconstructed cells, and a seven-cell acinus developed across a sequence of peer-reviewed studies.
 
-Key Findings
-Our study yields three principal results:
+## Scientific question
 
-Spatial Heterogeneities of Ca<sup>2+</sup> Concentration:
+How much spatial and multicellular biological detail is required to predict fluid secretion from parotid acinar cells?
 
-We show that spatial heterogeneities of Ca<sup>2+</sup> concentration in either the apical or basal regions of the cell have no significant effect on the rate of primary saliva secretion.
-Frequency of Ca<sup>2+</sup> Oscillation:
+The models couple intracellular Ca²⁺ signalling to ion transport, membrane fluxes, cell-volume regulation, luminal transport, and water flow. Increasingly detailed anatomical representations were used to test which spatial features materially alter secretory output.
 
-In agreement with previous work (Palk L., et al., 2012, J. Theor. Biol. 305:45-53, http://dx.doi.org/10.1016/j.jtbi.2012.04.009), we show that the frequency of Ca<sup>2+</sup> oscillation has no significant effect on the rate of primary saliva secretion, which is determined almost entirely by the mean (over time) of the apical and basal [Ca<sup>2+</sup>].
-Quasi-Steady State Model:
+## Main findings represented by this archive
 
-It is possible to model the rate of primary saliva secretion as a quasi-steady state function of the cytosolic [Ca<sup>2+</sup>] averaged over the entire cell when modeling the flow rate is the only interest. This approach ignores all the dynamic complexity not only of the fluid secretion mechanism but also of the intracellular heterogeneity of [Ca<sup>2+</sup>]<sub>i</sub>.
-Conclusion
-Taken together, our results demonstrate that an accurate multiscale model of primary saliva secretion from a single acinar cell can be constructed by ignoring the vast majority of the spatial and temporal complexity of the underlying mechanisms.
+- In the anatomically accurate single-cell model, spatial heterogeneity of intracellular Ca²⁺ in the apical or basal regions had little effect on the predicted primary saliva secretion rate.
+- The secretion rate was governed mainly by mean intracellular Ca²⁺ rather than the frequency of Ca²⁺ oscillations.
+- For flow-rate prediction alone, much of the underlying spatial and temporal complexity could be reduced to a substantially simpler representation.
+- The multicellular extension coupled seven reconstructed acinar cells through a common lumen and intercellular signalling.
+- In that model, acinus topology had little effect on total fluid secretion, suggesting that a detailed multicellular spatial representation is not required when total flow is the quantity of interest.
+
+## Start here
+
+The repository has been organised so that the original research code remains intact while the scientific workflow is easier to inspect.
+
+| Path | Contents |
+| --- | --- |
+| `model/` | MATLAB source, example scripts, initial conditions, and the archived `PSec.mat` parameter data |
+| `geometry/` | Reconstructed cell and lumen geometry, including STL files |
+| `results/` | Archived figures and fitted-model outputs |
+| `docs/` | Poster and supporting research material retained with the project |
+| `CITATION.cff` | Citation metadata for the repository |
+| `LICENSE` | MIT licence |
+
+Useful entry points in `model/` include
+
+- `ND_ex.m` — single-cell simulation example using `ND.m`
+- `ND_ex_closed.m` — comparison script using the closed and open single-cell formulations
+- `Open_ex.m` — parameter sweep for the open formulation
+- `Cluster_Secretion_ex.m` — seven-cell acinus simulation using `Cell.m`, `Cluster.m`, `Cluster_Secretion.m`, and `PSec.mat`
+
+For the multicellular example, set the MATLAB working directory to `model/` before running `Cluster_Secretion_ex.m` so that the archived parameter file is found in the expected location.
+
+## Reproducibility status
+
+This is an archive of original research code rather than a packaged software release. The MATLAB version and toolbox environment were not pinned when the code was deposited, and the repository does not contain an automated test suite. The present cleanup changes repository organisation and documentation only. The numerical model source has not been rewritten.
+
+## Associated publications
+
+The repository sits within the following sequence of work on mathematical modelling of salivary secretion.
+
+1. Vera-Sigüenza E, Catalán MA, Peña-Münzenmayer G, Melvin JE, Sneyd J. **A Mathematical Model Supports a Key Role for Ae4 (Slc4a9) in Salivary Gland Secretion.** *Bulletin of Mathematical Biology* 80, 255–282, 2018. https://doi.org/10.1007/s11538-017-0370-6
+
+2. Vera-Sigüenza E, Pages N, Rugis J, Yule DI, Sneyd J. **A Mathematical Model of Fluid Transport in an Accurate Reconstruction of Parotid Acinar Cells.** *Bulletin of Mathematical Biology* 81, 699–721, 2019. https://doi.org/10.1007/s11538-018-0534-z
+
+3. Pages N, Vera-Sigüenza E, Rugis J, Kirk V, Yule DI, Sneyd J. **A Model of Ca²⁺ Dynamics in an Accurate Reconstruction of Parotid Acinar Cells.** *Bulletin of Mathematical Biology* 81, 1394–1426, 2019. https://doi.org/10.1007/s11538-018-00563-z
+
+4. Vera-Sigüenza E, Pages N, Rugis J, Yule DI, Sneyd J. **A Multicellular Model of Primary Saliva Secretion in the Parotid Gland.** *Bulletin of Mathematical Biology* 82, article 38, 2020. https://doi.org/10.1007/s11538-020-00712-3
+
+5. Sneyd J, Vera-Sigüenza E, Rugis J, Pages N, Yule DI. **Calcium Dynamics and Water Transport in Salivary Acinar Cells.** *Bulletin of Mathematical Biology* 83, article 31, 2021. https://doi.org/10.1007/s11538-020-00841-9
+
+## Citation
+
+If you use a specific model, please cite the corresponding paper above. Repository-level citation metadata are also provided in `CITATION.cff`.
+
+## Licence
+
+The code in this repository is released under the MIT License.

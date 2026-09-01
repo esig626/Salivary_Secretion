@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the relevant associated publication listed in README.md."
+title: "Salivary Secretion Mathematical Models"
+type: software
+authors:
+  - family-names: "Vera-Sigüenza"
+    given-names: "Elías"
+repository-code: "https://github.com/esig626/Salivary_Secretion"
+license: MIT
