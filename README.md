@@ -23,6 +23,7 @@ The repository has been organised so that the original research code remains int
 | Path | Contents |
 | --- | --- |
 | `model/` | MATLAB source, example scripts, initial conditions, and the archived `PSec.mat` parameter data |
+| `model/archive/volume_model_2022/` | Later standalone salivary volume/transport implementation recovered from the former `Dynamical_systems` repository |
 | `geometry/` | Reconstructed cell and lumen geometry, including STL files |
 | `results/` | Archived figures and fitted-model outputs |
 | `docs/` | Poster and supporting research material retained with the project |
@@ -38,9 +39,11 @@ Useful entry points in `model/` include
 
 For the multicellular example, set the MATLAB working directory to `model/` before running `Cluster_Secretion_ex.m` so that the archived parameter file is found in the expected location.
 
+The `model/archive/volume_model_2022/` directory is a historical implementation rather than canonical publication code. Its `Volume_ex.m` file is an executable example for `Volume.m`. See the README inside that directory for provenance and status.
+
 ## Reproducibility status
 
-This is an archive of original research code rather than a packaged software release. The MATLAB version and toolbox environment were not pinned when the code was deposited, and the repository does not contain an automated test suite. The present cleanup changes repository organisation and documentation only. The numerical model source has not been rewritten.
+This is an archive of original research code rather than a packaged software release. The MATLAB version and toolbox environment were not pinned when the code was deposited, and the repository does not contain an automated test suite. Repository cleanups change organisation and documentation only. Numerical model source and archived MATLAB binary data are preserved without rewriting.
 
 ## Associated publications
 
